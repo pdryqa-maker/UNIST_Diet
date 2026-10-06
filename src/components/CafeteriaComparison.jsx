@@ -1,5 +1,5 @@
 import { CAFETERIAS } from '../lib/menu.js';
-import { fmt0, fmt1 } from '../lib/format.js';
+import { fmt0, fmt1, scoreTone } from '../lib/format.js';
 import { scoreBand } from '../lib/scoring.js';
 import { MACROS, MacroBar } from './MealBoard.jsx';
 import { CafName } from './ScoreBadge.jsx';
@@ -35,7 +35,7 @@ function RankRow({ rank, cafeteria, summary }) {
     <>
       <CafName cafeteria={cafeteria} label={`${rank}. ${CAFETERIAS[cafeteria].ko}`} />
       <div className="rank-track" title={`${CAFETERIAS[cafeteria].ko} 평균 ${fmt1(summary.score)}점 (${summary.n}개 식단)`}>
-        <span className="bar" style={{ width: `${summary.score * 10}%`, background: `var(--caf-${cafeteria})` }} />
+        <span className="bar" style={{ width: `${summary.score * 10}%`, background: `var(--sig-${scoreTone(summary.score)})` }} />
         <span className="ref" style={{ left: '50%' }} aria-hidden="true" />
       </div>
       <span className="rank-val">

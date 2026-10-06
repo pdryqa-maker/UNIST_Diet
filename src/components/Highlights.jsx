@@ -53,7 +53,17 @@ export default function Highlights({ best, date, time, weekRanking, weekSummary,
         <div className="value">{fmt1(weekSummary?.score)}</div>
         <div className="meta">
           기준 평균 5.0 대비{' '}
-          <b style={{ color: weekSummary && weekSummary.score >= 5 ? 'var(--good-text)' : 'var(--ink)' }}>
+          <b
+            style={{
+              color: !weekSummary
+                ? 'var(--ink)'
+                : weekSummary.score - 5 > 0.05
+                  ? 'var(--good-text)'
+                  : weekSummary.score - 5 < -0.05
+                    ? 'var(--bad-text)'
+                    : 'var(--ink)',
+            }}
+          >
             {weekSummary ? signed1(weekSummary.score - 5) : '–'}
           </b>
         </div>

@@ -1,103 +1,49 @@
+/* 다크 단일 테마.
+   - 점수 신호: 초록(적합) ↔ 회색(평균 5점) ↔ 빨강(부적합). 극단일수록 밝아지는 발산형이며,
+     색각이상 대비 ▲▼ 기호와 글자 라벨을 항상 함께 표시한다 (#34d399↔#ef4444 deutan ΔE 13.8).
+   - 초록·빨강은 신호 전용. 식당은 색이 아니라 이름으로 구분한다.
+   - 영양소: 탄수 파랑 · 단백질 금색 · 지방 보라 (인접쌍 검증 통과, surface #14171c 기준). */
 :root {
-  color-scheme: light;
-  --page: #f9f9f7;
-  --surface: #fcfcfb;
-  --surface-2: #f3f2ee;
-  --ink: #0b0b0b;
-  --ink-2: #52514e;
-  --muted: #898781;
-  --grid: #e1e0d9;
-  --axis: #c3c2b7;
-  --border: rgba(11, 11, 11, 0.1);
-  --focus: #2a78d6;
-  --good-text: #006300;
-
-  /* 식당 = 범주형 1~3번 (all-pairs 검증 통과) */
-  --caf-DORMITORY: #2a78d6;
-  --caf-STUDENT: #eb6834;
-  --caf-FACULTY: #1baf7a;
-  /* 영양소 = 범주형 4·5·7번 (인접쌍 검증 통과) */
-  --m-carb: #eda100;
-  --m-protein: #e87ba4;
-  --m-fat: #4a3aa7;
-
-  /* 점수 발산형: 파랑(적합) ↔ 회색(평균 5점) ↔ 빨강(부적합) */
-  --pos2: #256abf;
-  --pos2-ink: #ffffff;
-  --pos1: #cde2fb;
-  --pos1-ink: #0b0b0b;
-  --mid: #f0efec;
-  --mid-ink: #0b0b0b;
-  --neg1: #f9d0cf;
-  --neg1-ink: #0b0b0b;
-  --neg2: #c93a39;
-  --neg2-ink: #ffffff;
-
-  --radius: 12px;
-  --font: system-ui, -apple-system, 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) {
-    color-scheme: dark;
-    --page: #0d0d0d;
-    --surface: #1a1a19;
-    --surface-2: #242423;
-    --ink: #ffffff;
-    --ink-2: #c3c2b7;
-    --muted: #898781;
-    --grid: #2c2c2a;
-    --axis: #383835;
-    --border: rgba(255, 255, 255, 0.1);
-    --focus: #3987e5;
-    --good-text: #0ca30c;
-    --caf-DORMITORY: #3987e5;
-    --caf-STUDENT: #d95926;
-    --caf-FACULTY: #199e70;
-    --m-carb: #c98500;
-    --m-protein: #d55181;
-    --m-fat: #9085e9;
-    --pos2: #3987e5;
-    --pos2-ink: #0b0b0b;
-    --pos1: #1c3d66;
-    --pos1-ink: #ffffff;
-    --mid: #383835;
-    --mid-ink: #ffffff;
-    --neg1: #5c2626;
-    --neg1-ink: #ffffff;
-    --neg2: #e66767;
-    --neg2-ink: #0b0b0b;
-  }
-}
-:root[data-theme='dark'] {
   color-scheme: dark;
-  --page: #0d0d0d;
-  --surface: #1a1a19;
-  --surface-2: #242423;
-  --ink: #ffffff;
-  --ink-2: #c3c2b7;
-  --muted: #898781;
-  --grid: #2c2c2a;
-  --axis: #383835;
-  --border: rgba(255, 255, 255, 0.1);
-  --focus: #3987e5;
-  --good-text: #0ca30c;
-  --caf-DORMITORY: #3987e5;
-  --caf-STUDENT: #d95926;
-  --caf-FACULTY: #199e70;
-  --m-carb: #c98500;
-  --m-protein: #d55181;
+  --page: #0b0d10;
+  --surface: #14171c;
+  --surface-2: #1b1f26;
+  --surface-3: #232830;
+  --ink: #eef1f5;
+  --ink-2: #a3abb8;
+  --muted: #6b7380;
+  --grid: #20252d;
+  --axis: #333a45;
+  --border: rgba(255, 255, 255, 0.07);
+  --focus: #60a5fa;
+  --good-text: #34d399;
+  --bad-text: #f87171;
+
+  --m-carb: #3987e5;
+  --m-protein: #c98500;
   --m-fat: #9085e9;
-  --pos2: #3987e5;
-  --pos2-ink: #0b0b0b;
-  --pos1: #1c3d66;
-  --pos1-ink: #ffffff;
-  --mid: #383835;
-  --mid-ink: #ffffff;
-  --neg1: #5c2626;
-  --neg1-ink: #ffffff;
-  --neg2: #e66767;
-  --neg2-ink: #0b0b0b;
+
+  /* 신호 — 배지·히트맵 칸 채우기 */
+  --pos2: #34d399;
+  --pos2-ink: #04140d;
+  --pos1: #145c3f;
+  --pos1-ink: #d1fae5;
+  --mid: #262b33;
+  --mid-ink: #e5e7eb;
+  --neg1: #6e2328;
+  --neg1-ink: #fee2e2;
+  --neg2: #ef4444;
+  --neg2-ink: #1c0404;
+
+  /* 신호 — 막대·점 같은 마크 */
+  --sig-pos2: #34d399;
+  --sig-pos1: #1f9d6f;
+  --sig-mid: #6b7380;
+  --sig-neg1: #b94a4a;
+  --sig-neg2: #ef4444;
+
+  --radius: 14px;
+  --font: system-ui, -apple-system, 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif;
 }
 
 * {
@@ -166,10 +112,11 @@ button {
   background: var(--muted);
 }
 .dot.ok {
-  background: #0ca30c;
+  background: var(--good-text);
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.18);
 }
 .dot.failed {
-  background: #fab219;
+  background: #fbbf24;
 }
 
 /* ── Filter row ───────────────────────────────────── */
@@ -220,7 +167,7 @@ button {
 .chip:hover,
 .seg button:hover,
 .link-btn:hover {
-  background: var(--surface-2);
+  background: var(--surface-3);
 }
 .chips {
   display: flex;
@@ -257,7 +204,7 @@ button {
   border: 1px solid var(--border);
   border-radius: 9px;
   padding: 2px;
-  background: var(--surface-2);
+  background: var(--surface);
 }
 .seg button {
   border: 0;
@@ -267,8 +214,8 @@ button {
   font-size: 0.9rem;
 }
 .seg button[aria-pressed='true'] {
-  background: var(--surface);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+  background: var(--surface-3);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
   font-weight: 600;
 }
 .seg button:disabled {
@@ -444,7 +391,7 @@ button {
 }
 .card.best {
   border-color: var(--pos2);
-  box-shadow: 0 0 0 1px var(--pos2);
+  box-shadow: 0 0 0 1px var(--pos2), 0 0 28px rgba(52, 211, 153, 0.12);
 }
 .card-top {
   display: flex;
@@ -535,12 +482,12 @@ button {
 }
 .factor-fill.pos {
   left: 50%;
-  background: var(--pos2);
+  background: var(--sig-pos2);
   border-radius: 0 4px 4px 0;
 }
 .factor-fill.neg {
   right: 50%;
-  background: var(--neg2);
+  background: var(--sig-neg2);
   border-radius: 4px 0 0 4px;
 }
 .factor-val {
@@ -647,7 +594,7 @@ table.data tr.implied td {
   font-size: 0.86rem;
 }
 .heat td button:hover {
-  filter: brightness(0.94);
+  filter: brightness(1.18);
 }
 .heat td button[aria-pressed='true'] {
   outline: 2px solid var(--ink);
@@ -689,6 +636,8 @@ table.data tr.implied td {
 .rank-track {
   position: relative;
   height: 20px;
+  background: var(--surface-2);
+  border-radius: 4px;
 }
 .rank-track .bar {
   position: absolute;
@@ -731,12 +680,39 @@ table.data tr.implied td {
 
 /* ── Chart tooltip (Recharts) ─────────────────────── */
 .tt {
-  background: var(--surface);
+  background: var(--surface-3);
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 8px 10px;
   font-size: 0.82rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* ── Trend small multiples ────────────────────────── */
+.trend-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 14px;
+}
+.trend-panel {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px 6px;
+  background: var(--surface-2);
+}
+.trend-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2px;
+}
+.trend-latest {
+  color: var(--ink-2);
+  font-size: 0.82rem;
+}
+.trend-latest b {
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
 }
 .tt .tt-title {
   color: var(--ink-2);

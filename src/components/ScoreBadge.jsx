@@ -17,11 +17,7 @@ export function ScoreBadge({ score, large = false }) {
   );
 }
 
-export function CafName({ cafeteria, label }) {
-  return (
-    <span className="caf-name">
-      <span className="swatch" style={{ background: `var(--caf-${cafeteria})` }} aria-hidden="true" />
-      {label}
-    </span>
-  );
+// 식당은 색이 아니라 이름으로 구분한다 (초록·빨강은 점수 신호 전용).
+export function CafName({ label }) {
+  return <span className="caf-name">{label}</span>;
 }

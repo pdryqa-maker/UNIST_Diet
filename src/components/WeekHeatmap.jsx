@@ -56,7 +56,6 @@ export default function WeekHeatmap({ options, dates, selected, onSelect }) {
                 <tr key={`${time}-${caf}-${variant}`}>
                   <th className="row" scope="row">
                     <span className="caf-name" style={{ fontWeight: 500 }}>
-                      <span className="swatch" style={{ background: `var(--caf-${caf})` }} aria-hidden="true" />
                       {CAFETERIAS[caf].short} {variant}
                     </span>
                   </th>
