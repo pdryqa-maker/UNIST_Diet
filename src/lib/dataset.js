@@ -56,6 +56,8 @@ export function buildDataset(weeks, liveStatus = 'skipped', now = new Date()) {
     baselines,
     fallbackFactor,
     weekStarts: [...new Set(options.map((o) => o.weekStart))].sort(),
+    // API에서 받은 주는 source가 없고, HeXA 아카이브(OCR)에서 가져온 주는 출처 문자열이 있다.
+    weekSources: Object.fromEntries(Object.entries(weeks).map(([k, w]) => [k, w.source ?? null])),
     today,
     thisWeek,
     lastUpdated,

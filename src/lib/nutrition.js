@@ -13,15 +13,18 @@ const r = (label, cat, re, n, opts = {}) => ({ label, cat, re, n, ...opts });
 
 // 순서가 곧 우선순위다. 위에서부터 처음 맞는 규칙 하나만 쓴다.
 export const RULES = [
-  // ── 선택 항목 (식단 합계에서 제외)
-  r('추가 밥(선택)', 'optional', /^추가.*밥/, [0, 0, 0, 0], { optional: true }),
+  // ── 추가밥: 공시 칼로리에 포함되어 있다 (면 요리 221끼 비교 — 추가밥이 붙은 104끼는 공시값이
+  //    메뉴 추정보다 밥 한 공기만큼(+262kcal) 높고, 밥을 더하면 차이가 −14kcal로 사라진다).
+  //    면·일품 요리는 그대로 한 그릇으로 보고 밥만 더한다 (isRice가 '추가'로 시작하는 밥을 제외).
+  r('추가 밥', 'grain', /^추가.*밥/, [68, 6, 1, 0]),
 
   // ── 음료·디저트 (다른 규칙의 키워드와 겹치는 경우가 많아 먼저 본다)
   r('아이스크림·푸딩·젤리', 'dessert', /아이스크림|아이스바|콘아이스|푸딩|젤리|빙수|셔벗|샤베트/, [18, 2, 4, 15]),
-  r('무가당 차', 'drink', /(옥수수|보리|둥굴레|결명자|녹|현미|헛개|우엉|페퍼민트|루이보스|캐모마일|자스민|메밀|홍)차$|냉녹차|생수/, [0, 0, 0, 0]),
+  r('무가당 차', 'drink', /(옥수수|보리|둥굴레|결명자|녹|현미|헛개|우엉|페퍼민트|루이보스|캐모마일|자스민|메밀|홍)차$|냉녹차|생수|아메리카노|에스프레소|페퍼민트/, [0, 0, 0, 0]),
+  r('단백질 음료', 'drink', /(단백질|프로틴)\s*(드링크|음료|쉐이크|우유)/, [10, 12, 2, 8]),
   r('가공유', 'drink', /(초코|딸기|바나나|커피|모카|메론|멜론)우유|코코아|핫초코|라떼/, [26, 6, 6, 22]),
   r('우유·두유', 'drink', /우유|두유/, [10, 6, 6, 9]),
-  r('아이스티·가당 음료', 'drink', /아이스티|아이스[^크바]|에이드|매실|매샷|오미자|복분자|석류|유자차|레몬차|모과차|레모네이드|쿨피스|쥬시쿨|탄산|사이다|콜라|슬러시|스무디|음료/, [19, 0, 0, 18]),
+  r('아이스티·가당 음료', 'drink', /아이스티|아이스[^크바]|에이드|후르츠티|매실|매샷|오미자|복분자|석류|유자차|레몬차|모과차|레모네이드|쿨피스|쥬시쿨|탄산|사이다|콜라|슬러시|스무디|음료/, [19, 0, 0, 18]),
   r('미숫가루', 'drink', /미숫가루/, [20, 4, 2, 12]),
   r('무가당 차(기타)', 'drink', /차$|캐모마일|히비스커스/, [0, 0, 0, 0]),
   r('주스', 'drink', /주스|쥬스/, [22, 0.5, 0, 20]),
@@ -32,12 +35,14 @@ export const RULES = [
   r('츄러스', 'dessert', /츄러스|츄로스/, [26, 2, 10, 9]),
   r('호떡', 'dessert', /호떡/, [30, 3, 7, 12]),
   r('약과·한과', 'dessert', /약과|한과|유과|양갱/, [30, 1, 6, 15]),
-  r('빵·베이커리', 'dessert', /빵|카스텔라|카스테라|케이크|케익|머핀|쿠키|도넛|도너츠|와플|크로와상|크루아상|패스츄리|페스츄리|파이$|브라우니|마카롱|스콘|베이글|토스트|샌드위치|모닝롤/, [40, 6, 9, 15]),
-  r('에너지바·시리얼', 'dessert', /에너지바|시리얼|그래놀라바|프로틴바|초코바/, [22, 3, 6, 10]),
+  r('빵·베이커리', 'dessert', /빵|소보로|소보루|카스텔라|카스테라|케이크|케익|머핀|쿠키|도넛|도너츠|와플|크로와상|크루아상|패스츄리|페스츄리|파이$|브라우니|마카롱|스콘|베이글|토스트|샌드위치|모닝롤/, [40, 6, 9, 15]),
+  r('에너지바·시리얼', 'dessert', /에너지바|[시씨]리얼바|[시씨]리얼$|그래놀라바|프로틴바|단백질바|초코바|오란다/, [22, 3, 6, 10]),
+  r('떡', 'dessert', /송편|인절미|백설기|꿀떡|절편|시루떡|가래떡$/, [30, 2, 0.5, 6]),
+  r('초콜릿', 'dessert', /초콜릿|초콜렛|초코렛/, [15, 2, 9, 13]),
   r('쌀과자·스낵', 'dessert', /과자|스낵|팝콘|뻥튀기|크래커|누룽지칩|크리스피/, [18, 1, 3, 4]),
   r('견과류', 'dessert', /^(?!.*(멸치|조림|볶음)).*(견과|호두|땅콩|캐슈|아몬드)/, [6, 5, 12, 2]),
   // 과일은 이름이 과일로 시작하는 단품만 (감자'두부'의 자두, 후르츠'샐러드' 같은 오매칭 방지)
-  r('과일', 'fruit', /^(?!.*(샐러드|무침|조림|볶음|찌개|짜글이|국$|탕$))(컵|생|제철|한입)?(사과|바나나|귤|오렌지|수박|키위|포도|청포도|딸기|참외|파인애플|망고|복숭아|자몽|방울토마토|멜론|과일|후르츠|천혜향|한라봉|자두|체리)/, [15, 0.5, 0.2, 12]),
+  r('과일', 'fruit', /^(?!.*(샐러드|무침|조림|볶음|찌개|짜글이|국$|탕$))(컵|생|제철|한입|냉동)?(사과|바나나|감귤|귤|리치|블루베리|용과|오렌지|수박|키위|포도|청포도|딸기|참외|파인애플|망고|복숭아|자몽|방울토마토|멜론|과일|후르츠|천혜향|한라봉|자두|체리)/, [15, 0.5, 0.2, 12]),
 
   // ── 한 그릇 요리 (밥이 함께 나오면 반찬 크기로 본다: bowl)
   r('짜장면', 'bowl', /짜장면|짜계치|짜파/, [92, 18, 16, 10], { bowl: true }),
@@ -50,7 +55,7 @@ export const RULES = [
   r('우동', 'bowl', /우동(?!.*국물)(?!.*샐러드)/, [70, 12, 7, 5], { bowl: true }),
   r('떡국·만둣국', 'bowl', /떡국|만둣국|만두국/, [70, 15, 10, 2], { bowl: true }),
   r('볶음밥·오므라이스', 'bowl', /볶음밥|필라프|오므라이스|리조또/, [80, 13, 15, 4], { bowl: true }),
-  r('덮밥·비빔밥', 'bowl', /덮밥|비빔밥|라이스|(가츠|규|텐|사케|부타|오야코|에비)동$|돈부리|부리또|타코/, [88, 20, 14, 7], { bowl: true }),
+  r('덮밥·비빔밥', 'bowl', /덮밥|비빔밥|컵반|라이스|(가츠|규|텐|사케|부타|오야코|에비)동$|돈부리|부리또|타코/, [88, 20, 14, 7], { bowl: true }),
 
   // ── 국·찌개·탕 (이름 끝으로 판단)
   r('스프', 'soup', /(스프|수프|차우더)$/, [14, 3, 7, 4]),
@@ -81,9 +86,9 @@ export const RULES = [
   r('치킨·닭튀김', 'main', /치킨|닭튀김|후라이드|텐더|가라아게/, [14, 20, 18, 2]),
   r('너겟', 'side', /너겟/, [13, 9, 12, 1]),
   r('고로케', 'side', /고로케|크로켓|크로겟/, [22, 4, 12, 3]),
-  r('만두·춘권·김말이', 'side', /만두|춘권|사모사|김말이|딤섬|교자/, [24, 5, 11, 2]),
+  r('만두·춘권·김말이', 'side', /만두|춘권|사모사|김말이|잡채말이|딤섬|교자/, [24, 5, 11, 2]),
   r('핫바·어묵튀김', 'side', /핫바|어묵튀김|어묵바|뿌링볼/, [15, 6, 8, 3]),
-  r('튀김(기타)', 'side', /튀김|까스$|가스$|카츠$/, [18, 5, 12, 1]),
+  r('튀김(기타)', 'side', /튀김|까스$|가스$|카츠$|해[쉬시]브라운/, [18, 5, 12, 1]),
 
   // ── 덮밥 소스 (카레·짜장·하이라이스)
   r('카레·짜장 소스', 'main', /카레|(?<!치)커리|짜장|하이스/, [18, 6, 6, 5]),
@@ -100,7 +105,7 @@ export const RULES = [
   r('수육·보쌈', 'main', /수육|보쌈|편육/, [2, 20, 18, 0]),
   r('계란 장조림', 'side', /(계란|메추리알|달걀).*장조림/, [3, 6, 5, 3], { unit: true }),
   r('고기 장조림', 'side', /장조림/, [5, 14, 6, 5]),
-  r('돼지고기 요리', 'main', /제육|두루치기|불백|돼지|돈육|돈장|주물럭|오삼|삼겹|목살|항정|갈비찜|등갈비|김치찜/, [10, 18, 16, 7]),
+  r('돼지고기 요리', 'main', /제육|두루치기|불백|돼지|돈육|동파육|돈장|주물럭|오삼|삼겹|목살|항정|갈비찜|등갈비|김치찜/, [10, 18, 16, 7]),
   r('소고기 요리', 'main', /소고기|쇠고기|불고기|우삼겹|차돌|소불|육전|갈비/, [8, 18, 13, 6]),
   r('오리 요리', 'main', /오리/, [5, 15, 18, 3]),
   r('닭고기 요리', 'main', /닭|계육/, [8, 20, 8, 5]),
@@ -122,15 +127,15 @@ export const RULES = [
   r('전·부침·전병', 'side', /전병|부침|빈대떡|지짐|[^\s]전$/, [18, 5, 8, 2]),
   r('곤약', 'veg', /곤약/, [3, 0.3, 1.5, 2]),
   r('묵', 'veg', /묵/, [9, 1, 1, 1]),
-  r('장아찌·피클·단무지', 'pickle', /피클|단무지|장아찌|절임|쌈무|오복|무말랭이|고추지|깻잎|지$|젓갈/, [4, 0.5, 0.3, 3]),
-  r('김치·겉절이', 'kimchi', /김치|깍두기|석박지|섞박지|겉절이|총각|동치미|나박/, [3, 1, 0.3, 1.5]),
+  r('장아찌·피클·단무지', 'pickle', /피클|단무지|장아찌|절임|쌈무|오복|궁채|무말랭이|고추지|깻잎|지$|젓갈/, [4, 0.5, 0.3, 3]),
+  r('김치·겉절이', 'kimchi', /김치|깍두기|석박지|섞박지|겉절이|얼절이|총각|동치미|나박/, [3, 1, 0.3, 1.5]),
   r('김·김자반', 'side', /김$|김구이|김자반|도시락김|파래김|김가루/, [1, 1, 1.5, 0]),
   r('감자·고구마·옥수수', 'side', /감자|고구마|옥수수|콘$|단호박|밤/, [18, 2, 4, 4]),
   r('나물·무침', 'veg', /나물|무침|생채|숙회|버무리|냉채|쌈$|숙주|시금치|콩나물|비빔야채/, [4, 1.5, 2, 1.5]),
   r('채소 볶음', 'veg', /볶음|소테/, [6, 2, 4, 2]),
   r('채소 조림', 'veg', /조림/, [11, 2, 1, 6]),
   r('채소 구이·찜', 'veg', /구이|찜/, [5, 2, 2, 1]),
-  r('채소(생·데침)', 'veg', /브로콜리|양배추|양파|오이|당근|파프리카|채소|야채|상추|고추|피망|버섯|호박|가지|무$|쌈/, [4, 1.5, 0.3, 2]),
+  r('채소(생·데침)', 'veg', /브로콜리|[컬콜]리플라워|청경채|연근|파채|겨울초|양배추|양파|오이|당근|파프리카|채소|야채|상추|고추|피망|버섯|호박|가지|무$|쌈/, [4, 1.5, 0.3, 2]),
   r('미역·해초', 'veg', /미역|해초|다시마|꼬시래기|톳|파래|매생이/, [4, 1, 1, 2.5]),
 ];
 
@@ -152,7 +157,7 @@ export const SAUCES = [
 const UNKNOWN = r('기타 반찬(추정)', 'unknown', /.^/, [6, 3, 3, 2]);
 
 export const CATEGORY_KO = {
-  optional: '선택', drink: '음료', dessert: '디저트', fruit: '과일', bowl: '일품', soup: '국·찌개',
+  drink: '음료', dessert: '디저트', fruit: '과일', bowl: '일품', soup: '국·찌개',
   grain: '밥', side: '반찬', main: '주찬', veg: '채소', pickle: '절임', kimchi: '김치', sauce: '소스',
   unknown: '미분류', implied: '추정 보충',
 };
@@ -175,7 +180,8 @@ export function parseMenuName(raw) {
   let s = String(raw).trim();
   let portion = 1;
   let bowlPrefix = false;
-  const prefix = s.match(/^(큰그릇|한그릇|큰|미니|소)\)\s*/);
+  // OCR 데이터에는 '한그릇매콤파닭개장'처럼 괄호가 빠진 표기도 있다.
+  const prefix = s.match(/^(큰그릇|한그릇)\)?\s*/) ?? s.match(/^(큰|미니|소)\)\s*/);
   if (prefix) {
     if (prefix[1] === '미니' || prefix[1] === '소') portion = 0.5;
     else {
@@ -207,7 +213,8 @@ const matchRule = (rules, name) => rules.find((rule) => rule.re.test(name));
  */
 export function estimateItem(raw, ctx = {}) {
   const p = parseMenuName(raw);
-  const rule = matchRule(RULES, p.main) ?? UNKNOWN;
+  // '크림소스'처럼 소스만 단독으로 온 경우도 소스 규칙으로 본다.
+  const rule = matchRule(RULES, p.main) ?? matchRule(SAUCES, p.main) ?? UNKNOWN;
   // '돈제한판(돈까스+제육우동)'처럼 이름만으론 모르겠지만 괄호 안이 구성 요리 목록이면 그걸로 추정
   const combo = String(raw).match(/\(([^)]*[+&][^)]*)\)/);
   if (rule === UNKNOWN && combo) return { ...estimateItem(combo[1], ctx), name: raw };
@@ -234,7 +241,6 @@ export function estimateItem(raw, ctx = {}) {
     rule: rule.label,
     cat: rule.cat,
     matched: rule !== UNKNOWN,
-    optional: Boolean(rule.optional),
     parts,
     ...nut,
     kcal: kcalOf(nut),
@@ -264,7 +270,7 @@ const isRice = (name) => {
 export function analyzeOption(opt, fallbackFactor = 1) {
   const hasRice = opt.items.some((i) => isRice(i.ko));
   const items = opt.items.map((i) => ({ ...estimateItem(i.ko, { hasRice }), en: i.en }));
-  const raw = items.filter((i) => !i.optional).reduce(addNut, ZERO);
+  const raw = items.reduce(addNut, ZERO);
   const estKcal = kcalOf(raw);
   const rawFactor = opt.officialKcal && estKcal > 0 ? opt.officialKcal / estKcal : null;
   let factor = fallbackFactor;
@@ -275,15 +281,13 @@ export function analyzeOption(opt, fallbackFactor = 1) {
   }
   const total = addNut(scaleNut(raw, factor), residualNut(residualKcal));
   const kcal = opt.officialKcal ?? kcalOf(total);
-  const counted = items.filter((i) => !i.optional);
-  const scaledItems = items.map((i) => ({ ...i, ...scaleNut(i, i.optional ? 0 : factor), kcal: i.optional ? 0 : i.kcal * factor }));
+  const scaledItems = items.map((i) => ({ ...i, ...scaleNut(i, factor), kcal: i.kcal * factor }));
   if (residualKcal > 1) {
     scaledItems.push({
       name: '표기되지 않은 구성 (밥·반찬 등)',
       rule: '단체급식 평균 구성비로 배분',
       cat: 'implied',
       matched: true,
-      optional: false,
       implied: true,
       parts: [],
       ...residualNut(residualKcal),
@@ -298,7 +302,7 @@ export function analyzeOption(opt, fallbackFactor = 1) {
     rawFactor,
     residualKcal,
     kcalSource: opt.officialKcal ? 'official' : 'estimated',
-    coverage: counted.length ? counted.filter((i) => i.matched).length / counted.length : 1,
+    coverage: items.length ? items.filter((i) => i.matched).length / items.length : 1,
     nutrients: { kcal, carb: total.carb, protein: total.protein, fat: total.fat, sugar: total.sugar },
     energyPct: {
       carb: kcal ? ((4 * total.carb) / kcal) * 100 : 0,

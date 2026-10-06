@@ -16,7 +16,7 @@ const { options, baselines } = scoreOptions(analyzed, thisWeek);
 const f1 = (x) => (x == null ? '-' : x.toFixed(1));
 console.log(`weeks: ${Object.keys(snap.weeks).length}, options: ${options.length}, fallback factor: ${fallbackFactor.toFixed(2)}`);
 
-const allItems = options.flatMap((o) => o.items.filter((i) => !i.optional && !i.implied));
+const allItems = options.flatMap((o) => o.items.filter((i) => !i.implied));
 const unmatched = allItems.filter((i) => !i.matched);
 console.log(`menu items: ${allItems.length}, rule coverage: ${(100 - (unmatched.length / allItems.length) * 100).toFixed(1)}%`);
 const factors = options.filter((o) => o.rawFactor != null).map((o) => o.rawFactor);

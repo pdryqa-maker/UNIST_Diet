@@ -26,12 +26,14 @@ export const DAY_KO = { MON: '월', TUE: '화', WED: '수', THU: '목', FRI: '�
 const MENU_TYPE_KO = { KOREAN: '한식', HALAL: '할랄' };
 const SECTION_KO = { REGULAR: '정식', SPECIAL: '일품', CONVENIENCE: '간편식' };
 
+const SPLIT_RE = /(?<!\d)\/(?!\d)/;
+
 // 샐러드바는 선택 사항이라 공식 앱(meal_client)과 동일하게 분석에서 제외한다.
 const SKIPPED_SECTIONS = new Set(['SALAD']);
 
 // 휴무일에는 "추석", "개원기념일" 같은 한 줄짜리 안내만 들어온다.
 const CLOSED_RE =
-  /휴무|휴점|휴관|공휴일|연휴|추석|설날|명절|한글날|제헌절|개원기념일|광복절|개천절|현충일|어린이날|성탄|크리스마스|부처님|석가|선거|미운영|운영\s*안|운영없|없음|미정/;
+  /휴무|휴점|휴관|공휴일|연휴|추석|설날|신정|명절|한글날|제헌절|개원기념일|광복절|개천절|현충일|어린이날|노동절|근로자의\s*날|성탄|크리스마스|부처님|석가|선거|방학|미운영|운영\s*안|운영없|없음|미정/;
 
 export function isClosedOption(items, kcal) {
   if (items.length === 0) return true;
@@ -58,10 +60,17 @@ export function flattenWeek(weekStart, week) {
       for (const group of meal.menusByType ?? []) {
         (group.sections ?? []).forEach((section, idx) => {
           if (SKIPPED_SECTIONS.has(section.sectionType)) return;
+          // '배추김치/요구르트1EA'처럼 두 메뉴가 '/'로 붙어 오는 경우가 있어 나눈다 ('삶은계란1/2'의 분수는 유지).
           const items = (section.menus ?? [])
-            .map((m) => ({ ko: String(m.ko ?? '').trim(), en: m.en ?? null, allergens: m.allergens ?? [] }))
-            .filter((m) => m.ko);
-          const kcal = typeof section.calorie === 'number' && section.calorie > 0 ? section.calorie : null;
+            .flatMap((m) =>
+              String(m.ko ?? '')
+                .split(SPLIT_RE)
+                .map((ko, i, parts) => ({ ko: ko.trim(), en: parts.length > 1 ? null : (m.en ?? null), allergens: m.allergens ?? [] })),
+            )
+            // OCR이 설명 괄호를 따로 떼어 읽은 조각('(쌀밥,닭갈비,깻잎)', '(돈육', '돈사골)')은 버린다.
+            .filter((m) => m.ko && !/^\([^)]*\)?$/.test(m.ko) && !/^[^(]*\)$/.test(m.ko));
+          // 한 끼 250~2,500kcal를 벗어나면 OCR 오독(104, 9630 등)으로 보고 공시값 없음으로 처리한다.
+          const kcal = typeof section.calorie === 'number' && section.calorie >= 250 && section.calorie <= 2500 ? section.calorie : null;
           if (isClosedOption(items, kcal)) return;
           out.push({
             id: [meal.date, meal.timeType, caf.cafeteria, group.menuType, section.sectionType, idx].join('|'),

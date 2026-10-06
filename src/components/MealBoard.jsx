@@ -94,9 +94,7 @@ function OptionCard({ o, isBest }) {
         {o.items
           .filter((i) => !i.implied)
           .map((i, idx) => (
-            <li key={idx} style={i.optional ? { color: 'var(--muted)' } : undefined}>
-              {i.name}
-            </li>
+            <li key={idx}>{i.name}</li>
           ))}
       </ul>
 
@@ -120,7 +118,7 @@ function OptionCard({ o, isBest }) {
                   <td>
                     {i.name}
                     <span className="rule">
-                      {i.optional ? '선택 항목 · 합계 제외' : `${CATEGORY_KO[i.cat] ?? i.cat} · ${i.parts.length ? i.parts.map((p) => p.rule).join(' + ') : i.rule}`}
+                      {CATEGORY_KO[i.cat] ?? i.cat} · {i.parts.length ? i.parts.map((p) => p.rule).join(' + ') : i.rule}
                     </span>
                   </td>
                   <td>{fmt0(i.kcal)}</td>

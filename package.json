@@ -9,7 +9,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "fetch-data": "node scripts/fetch-menus.mjs",
-    "report": "node scripts/report.mjs"
+    "report": "node scripts/report.mjs",
+    "import-archive": "node scripts/import-archive.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

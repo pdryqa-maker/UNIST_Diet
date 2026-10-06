@@ -94,6 +94,7 @@ export default function App() {
       <FilterBar
         weekStarts={ds.weekStarts}
         week={week}
+        weekSource={ds.weekSources[week]}
         onWeek={(w) => {
           setWeek(w);
           setWantedDate(null);

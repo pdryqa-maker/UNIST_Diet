@@ -4,6 +4,7 @@ import { dayLabel, weekRangeLabel } from '../lib/format.js';
 export default function FilterBar({
   weekStarts,
   week,
+  weekSource,
   onWeek,
   thisWeek,
   dates,
@@ -31,6 +32,11 @@ export default function FilterBar({
         >
           ›
         </button>
+        {weekSource && (
+          <span className="src-tag" title={`식단표 이미지 OCR 데이터: ${weekSource}`}>
+            OCR 아카이브
+          </span>
+        )}
         {week !== thisWeek && weekStarts.includes(thisWeek) && (
           <button className="link-btn" onClick={() => onWeek(thisWeek)}>
             이번 주

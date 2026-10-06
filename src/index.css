@@ -226,6 +226,16 @@ button {
   padding: 4px 10px;
   font-size: 0.85rem;
 }
+.src-tag {
+  margin-left: 4px;
+  padding: 2px 8px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.74rem;
+  color: var(--ink-2);
+  background: var(--surface-2);
+  white-space: nowrap;
+}
 
 /* ── Panels ───────────────────────────────────────── */
 .panel {
