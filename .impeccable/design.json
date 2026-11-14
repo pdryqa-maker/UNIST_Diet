@@ -1,0 +1,746 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-14T15:36:21.142Z",
+  "title": "Design System: UNIST Diet",
+  "extensions": {
+    "colorMeta": {
+      "blue": {
+        "role": "primary",
+        "displayName": "코발트 셸",
+        "canonical": "#1d3bd1",
+        "oklch": "oklch(44.9% 0.229 266)",
+        "tonalRamp": [
+          "oklch(15.0% 0.087 266)",
+          "oklch(27.0% 0.129 266)",
+          "oklch(39.0% 0.172 266)",
+          "oklch(51.0% 0.215 266)",
+          "oklch(63.0% 0.201 266)",
+          "oklch(75.0% 0.158 266)",
+          "oklch(86.0% 0.119 266)",
+          "oklch(95.0% 0.087 266)"
+        ]
+      },
+      "blue-deep": {
+        "role": "primary",
+        "displayName": "짙은 코발트",
+        "canonical": "#152ca3",
+        "oklch": "oklch(37.4% 0.190 267)",
+        "tonalRamp": [
+          "oklch(15.0% 0.072 267)",
+          "oklch(27.0% 0.107 267)",
+          "oklch(39.0% 0.143 267)",
+          "oklch(51.0% 0.178 267)",
+          "oklch(63.0% 0.167 267)",
+          "oklch(75.0% 0.131 267)",
+          "oklch(86.0% 0.098 267)",
+          "oklch(95.0% 0.072 267)"
+        ]
+      },
+      "blue-line": {
+        "role": "primary",
+        "displayName": "코발트 괘선",
+        "canonical": "#94a4f2",
+        "oklch": "oklch(73.7% 0.115 274)",
+        "tonalRamp": [
+          "oklch(15.0% 0.043 274)",
+          "oklch(27.0% 0.065 274)",
+          "oklch(39.0% 0.086 274)",
+          "oklch(51.0% 0.107 274)",
+          "oklch(63.0% 0.100 274)",
+          "oklch(75.0% 0.079 274)",
+          "oklch(86.0% 0.059 274)",
+          "oklch(95.0% 0.043 274)"
+        ]
+      },
+      "on-blue": {
+        "role": "primary",
+        "displayName": "띠 위 글자",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100.0% 0.000 0)",
+        "tonalRamp": [
+          "oklch(15.0% 0.000 0)",
+          "oklch(27.0% 0.000 0)",
+          "oklch(39.0% 0.000 0)",
+          "oklch(51.0% 0.000 0)",
+          "oklch(63.0% 0.000 0)",
+          "oklch(75.0% 0.000 0)",
+          "oklch(86.0% 0.000 0)",
+          "oklch(95.0% 0.000 0)"
+        ]
+      },
+      "on-blue-2": {
+        "role": "primary",
+        "displayName": "띠 위 보조 글자",
+        "canonical": "#d5dcfb",
+        "oklch": "oklch(89.9% 0.043 275)",
+        "tonalRamp": [
+          "oklch(15.0% 0.016 275)",
+          "oklch(27.0% 0.024 275)",
+          "oklch(39.0% 0.032 275)",
+          "oklch(51.0% 0.040 275)",
+          "oklch(63.0% 0.038 275)",
+          "oklch(75.0% 0.030 275)",
+          "oklch(86.0% 0.022 275)",
+          "oklch(95.0% 0.016 275)"
+        ]
+      },
+      "hi": {
+        "role": "secondary",
+        "displayName": "형광펜 노랑",
+        "canonical": "#ffe04a",
+        "oklch": "oklch(90.7% 0.164 97)",
+        "tonalRamp": [
+          "oklch(15.0% 0.062 97)",
+          "oklch(27.0% 0.093 97)",
+          "oklch(39.0% 0.123 97)",
+          "oklch(51.0% 0.154 97)",
+          "oklch(63.0% 0.144 97)",
+          "oklch(75.0% 0.113 97)",
+          "oklch(86.0% 0.085 97)",
+          "oklch(95.0% 0.062 97)"
+        ]
+      },
+      "pos": {
+        "role": "tertiary",
+        "displayName": "가점 초록",
+        "canonical": "#0b7a45",
+        "oklch": "oklch(51.0% 0.123 155)",
+        "tonalRamp": [
+          "oklch(15.0% 0.047 155)",
+          "oklch(27.0% 0.070 155)",
+          "oklch(39.0% 0.093 155)",
+          "oklch(51.0% 0.116 155)",
+          "oklch(63.0% 0.108 155)",
+          "oklch(75.0% 0.085 155)",
+          "oklch(86.0% 0.064 155)",
+          "oklch(95.0% 0.047 155)"
+        ]
+      },
+      "neg": {
+        "role": "tertiary",
+        "displayName": "감점 빨강",
+        "canonical": "#c42e17",
+        "oklch": "oklch(53.8% 0.190 32)",
+        "tonalRamp": [
+          "oklch(15.0% 0.072 32)",
+          "oklch(27.0% 0.107 32)",
+          "oklch(39.0% 0.142 32)",
+          "oklch(51.0% 0.178 32)",
+          "oklch(63.0% 0.166 32)",
+          "oklch(75.0% 0.131 32)",
+          "oklch(86.0% 0.098 32)",
+          "oklch(95.0% 0.072 32)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "차가운 종이",
+        "canonical": "#eef0f4",
+        "oklch": "oklch(95.5% 0.006 265)",
+        "tonalRamp": [
+          "oklch(15.0% 0.002 265)",
+          "oklch(27.0% 0.003 265)",
+          "oklch(39.0% 0.004 265)",
+          "oklch(51.0% 0.005 265)",
+          "oklch(63.0% 0.005 265)",
+          "oklch(75.0% 0.004 265)",
+          "oklch(86.0% 0.003 265)",
+          "oklch(95.0% 0.002 265)"
+        ]
+      },
+      "sheet": {
+        "role": "neutral",
+        "displayName": "흰 종이",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100.0% 0.000 0)",
+        "tonalRamp": [
+          "oklch(15.0% 0.000 0)",
+          "oklch(27.0% 0.000 0)",
+          "oklch(39.0% 0.000 0)",
+          "oklch(51.0% 0.000 0)",
+          "oklch(63.0% 0.000 0)",
+          "oklch(75.0% 0.000 0)",
+          "oklch(86.0% 0.000 0)",
+          "oklch(95.0% 0.000 0)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "잉크",
+        "canonical": "#0f1320",
+        "oklch": "oklch(19.0% 0.027 271)",
+        "tonalRamp": [
+          "oklch(15.0% 0.010 271)",
+          "oklch(27.0% 0.015 271)",
+          "oklch(39.0% 0.021 271)",
+          "oklch(51.0% 0.026 271)",
+          "oklch(63.0% 0.024 271)",
+          "oklch(75.0% 0.019 271)",
+          "oklch(86.0% 0.014 271)",
+          "oklch(95.0% 0.010 271)"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "옅은 잉크",
+        "canonical": "#4a5167",
+        "oklch": "oklch(43.8% 0.037 271)",
+        "tonalRamp": [
+          "oklch(15.0% 0.014 271)",
+          "oklch(27.0% 0.021 271)",
+          "oklch(39.0% 0.028 271)",
+          "oklch(51.0% 0.035 271)",
+          "oklch(63.0% 0.033 271)",
+          "oklch(75.0% 0.026 271)",
+          "oklch(86.0% 0.019 271)",
+          "oklch(95.0% 0.014 271)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "행 괘선",
+        "canonical": "#c9ceda",
+        "oklch": "oklch(85.1% 0.017 268)",
+        "tonalRamp": [
+          "oklch(15.0% 0.007 268)",
+          "oklch(27.0% 0.010 268)",
+          "oklch(39.0% 0.013 268)",
+          "oklch(51.0% 0.016 268)",
+          "oklch(63.0% 0.015 268)",
+          "oklch(75.0% 0.012 268)",
+          "oklch(86.0% 0.009 268)",
+          "oklch(95.0% 0.007 268)"
+        ]
+      },
+      "t-pos2": {
+        "role": "tertiary",
+        "displayName": "구간 채우기 · 매우 적합",
+        "canonical": "#8fd0ae",
+        "oklch": "oklch(80.4% 0.082 161)",
+        "tonalRamp": [
+          "oklch(15.0% 0.031 161)",
+          "oklch(27.0% 0.046 161)",
+          "oklch(39.0% 0.062 161)",
+          "oklch(51.0% 0.077 161)",
+          "oklch(63.0% 0.072 161)",
+          "oklch(75.0% 0.057 161)",
+          "oklch(86.0% 0.043 161)",
+          "oklch(95.0% 0.031 161)"
+        ]
+      },
+      "t-pos2-ink": {
+        "role": "tertiary",
+        "displayName": "구간 글자 · 매우 적합",
+        "canonical": "#05371f",
+        "oklch": "oklch(29.8% 0.067 157)",
+        "tonalRamp": [
+          "oklch(15.0% 0.025 157)",
+          "oklch(27.0% 0.038 157)",
+          "oklch(39.0% 0.050 157)",
+          "oklch(51.0% 0.063 157)",
+          "oklch(63.0% 0.059 157)",
+          "oklch(75.0% 0.046 157)",
+          "oklch(86.0% 0.035 157)",
+          "oklch(95.0% 0.025 157)"
+        ]
+      },
+      "t-pos1": {
+        "role": "tertiary",
+        "displayName": "구간 채우기 · 적합",
+        "canonical": "#d6eee0",
+        "oklch": "oklch(92.8% 0.031 160)",
+        "tonalRamp": [
+          "oklch(15.0% 0.012 160)",
+          "oklch(27.0% 0.018 160)",
+          "oklch(39.0% 0.024 160)",
+          "oklch(51.0% 0.030 160)",
+          "oklch(63.0% 0.028 160)",
+          "oklch(75.0% 0.022 160)",
+          "oklch(86.0% 0.016 160)",
+          "oklch(95.0% 0.012 160)"
+        ]
+      },
+      "t-pos1-ink": {
+        "role": "tertiary",
+        "displayName": "구간 글자 · 적합",
+        "canonical": "#0a4a2b",
+        "oklch": "oklch(36.2% 0.082 156)",
+        "tonalRamp": [
+          "oklch(15.0% 0.031 156)",
+          "oklch(27.0% 0.046 156)",
+          "oklch(39.0% 0.061 156)",
+          "oklch(51.0% 0.077 156)",
+          "oklch(63.0% 0.071 156)",
+          "oklch(75.0% 0.056 156)",
+          "oklch(86.0% 0.042 156)",
+          "oklch(95.0% 0.031 156)"
+        ]
+      },
+      "t-neg1": {
+        "role": "tertiary",
+        "displayName": "구간 채우기 · 주의",
+        "canonical": "#fbe1da",
+        "oklch": "oklch(92.9% 0.030 35)",
+        "tonalRamp": [
+          "oklch(15.0% 0.011 35)",
+          "oklch(27.0% 0.017 35)",
+          "oklch(39.0% 0.023 35)",
+          "oklch(51.0% 0.028 35)",
+          "oklch(63.0% 0.027 35)",
+          "oklch(75.0% 0.021 35)",
+          "oklch(86.0% 0.016 35)",
+          "oklch(95.0% 0.011 35)"
+        ]
+      },
+      "t-neg1-ink": {
+        "role": "tertiary",
+        "displayName": "구간 글자 · 주의",
+        "canonical": "#7c1d0f",
+        "oklch": "oklch(38.9% 0.132 31)",
+        "tonalRamp": [
+          "oklch(15.0% 0.050 31)",
+          "oklch(27.0% 0.074 31)",
+          "oklch(39.0% 0.099 31)",
+          "oklch(51.0% 0.124 31)",
+          "oklch(63.0% 0.116 31)",
+          "oklch(75.0% 0.091 31)",
+          "oklch(86.0% 0.068 31)",
+          "oklch(95.0% 0.050 31)"
+        ]
+      },
+      "t-neg2": {
+        "role": "tertiary",
+        "displayName": "구간 채우기 · 부적합",
+        "canonical": "#f3a796",
+        "oklch": "oklch(79.8% 0.094 33)",
+        "tonalRamp": [
+          "oklch(15.0% 0.035 33)",
+          "oklch(27.0% 0.053 33)",
+          "oklch(39.0% 0.070 33)",
+          "oklch(51.0% 0.088 33)",
+          "oklch(63.0% 0.082 33)",
+          "oklch(75.0% 0.065 33)",
+          "oklch(86.0% 0.049 33)",
+          "oklch(95.0% 0.035 33)"
+        ]
+      },
+      "t-neg2-ink": {
+        "role": "tertiary",
+        "displayName": "구간 글자 · 부적합",
+        "canonical": "#5e1206",
+        "oklch": "oklch(31.7% 0.110 32)",
+        "tonalRamp": [
+          "oklch(15.0% 0.042 32)",
+          "oklch(27.0% 0.062 32)",
+          "oklch(39.0% 0.083 32)",
+          "oklch(51.0% 0.104 32)",
+          "oklch(63.0% 0.097 32)",
+          "oklch(75.0% 0.076 32)",
+          "oklch(86.0% 0.057 32)",
+          "oklch(95.0% 0.042 32)"
+        ]
+      },
+      "sig-pos1": {
+        "role": "tertiary",
+        "displayName": "구간 마크 · 적합",
+        "canonical": "#55b587",
+        "oklch": "oklch(70.2% 0.115 160)",
+        "tonalRamp": [
+          "oklch(15.0% 0.043 160)",
+          "oklch(27.0% 0.065 160)",
+          "oklch(39.0% 0.086 160)",
+          "oklch(51.0% 0.107 160)",
+          "oklch(63.0% 0.100 160)",
+          "oklch(75.0% 0.079 160)",
+          "oklch(86.0% 0.059 160)",
+          "oklch(95.0% 0.043 160)"
+        ]
+      },
+      "sig-mid": {
+        "role": "tertiary",
+        "displayName": "구간 마크 · 보통",
+        "canonical": "#8a91a5",
+        "oklch": "oklch(65.8% 0.031 270)",
+        "tonalRamp": [
+          "oklch(15.0% 0.012 270)",
+          "oklch(27.0% 0.017 270)",
+          "oklch(39.0% 0.023 270)",
+          "oklch(51.0% 0.029 270)",
+          "oklch(63.0% 0.027 270)",
+          "oklch(75.0% 0.021 270)",
+          "oklch(86.0% 0.016 270)",
+          "oklch(95.0% 0.012 270)"
+        ]
+      },
+      "sig-neg1": {
+        "role": "tertiary",
+        "displayName": "구간 마크 · 주의",
+        "canonical": "#e58b7b",
+        "oklch": "oklch(72.7% 0.113 31)",
+        "tonalRamp": [
+          "oklch(15.0% 0.043 31)",
+          "oklch(27.0% 0.064 31)",
+          "oklch(39.0% 0.085 31)",
+          "oklch(51.0% 0.106 31)",
+          "oklch(63.0% 0.099 31)",
+          "oklch(75.0% 0.078 31)",
+          "oklch(86.0% 0.059 31)",
+          "oklch(95.0% 0.043 31)"
+        ]
+      },
+      "m-fat": {
+        "role": "tertiary",
+        "displayName": "에너지 구성 · 지방",
+        "canonical": "#7c86a0",
+        "oklch": "oklch(62.1% 0.041 269)",
+        "tonalRamp": [
+          "oklch(15.0% 0.016 269)",
+          "oklch(27.0% 0.023 269)",
+          "oklch(39.0% 0.031 269)",
+          "oklch(51.0% 0.038 269)",
+          "oklch(63.0% 0.036 269)",
+          "oklch(75.0% 0.028 269)",
+          "oklch(86.0% 0.021 269)",
+          "oklch(95.0% 0.016 269)"
+        ]
+      }
+    },
+    "colorAliases": {
+      "t-mid": "sheet",
+      "t-mid-ink": "ink",
+      "sig-pos2": "pos",
+      "sig-neg2": "neg",
+      "m-carb": "blue",
+      "m-protein": "ink"
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "기록표 행의 합계 점수. 좁은 기록표에서는 clamp(3.25rem, 15cqi, 4.5rem), 네 글자일 때는 clamp(3.2rem, 6.9cqi, 4.3rem)."
+      },
+      "wordmark": {
+        "displayName": "Wordmark",
+        "purpose": "상단 띠의 UNIST Diet. 휴대폰 폭에서는 1.625rem."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "기록표 제목 \"M월 D일 X요일 끼니\". 페이지에 하나."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "아래 섹션 제목."
+      },
+      "name": {
+        "displayName": "Name",
+        "purpose": "기록표 행의 식당 이름."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "기본 본문."
+      },
+      "note": {
+        "displayName": "Note",
+        "purpose": "주석 여백, 메뉴 목록, 범례, 꼬리말. 옅은 잉크."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "표의 열 머리와 휴대폰 폭의 칸 이름표. 가장 작은 글자."
+      },
+      "figure": {
+        "displayName": "Figure",
+        "purpose": "표 안의 숫자. 고정폭 숫자, 오른쪽 정렬."
+      },
+      "display-wide": {
+        "displayName": "Display Wide",
+        "purpose": "넓은 표에서 네 글자 점수(10.0)."
+      },
+      "display-compact": {
+        "displayName": "Display Compact",
+        "purpose": "접힌 기록표(940px 이하)의 합계 점수."
+      },
+      "display-compact-wide": {
+        "displayName": "Display Compact Wide",
+        "purpose": "접힌 기록표에서 네 글자 점수."
+      },
+      "wordmark-compact": {
+        "displayName": "Wordmark Compact",
+        "purpose": "720px 미만의 워드마크."
+      },
+      "name-sm": {
+        "displayName": "Name Small",
+        "purpose": "순위표의 식당 이름과 빈 상태의 굵은 한 줄."
+      },
+      "body-sm": {
+        "displayName": "Body Small",
+        "purpose": "섹션 설명, 본문 버튼, 분석 방법 조판."
+      },
+      "figure-sm": {
+        "displayName": "Figure Small",
+        "purpose": "메뉴별 기록과 720px 미만의 주간표 칸."
+      },
+      "figure-md": {
+        "displayName": "Figure Medium",
+        "purpose": "순위 숫자, 주간표 머리의 날짜, 추이 표."
+      },
+      "figure-lg": {
+        "displayName": "Figure Large",
+        "purpose": "주석 여백 주간 요약의 점수."
+      },
+      "figure-score": {
+        "displayName": "Figure Score",
+        "purpose": "순위표의 점수."
+      },
+      "code": {
+        "displayName": "Code",
+        "purpose": "분석 방법 본문 속의 코드 조각. 시스템 고정폭."
+      },
+      "figure-strong": {
+        "displayName": "Figure Strong",
+        "purpose": "kcal과 가감점처럼 행에서 먼저 읽히는 숫자."
+      }
+    },
+    "shadows": [
+      {
+        "name": "cell-hover-ring",
+        "value": "inset 0 0 0 2px var(--ink)",
+        "purpose": "주간 점수표 칸의 hover 테. 입체 그림자가 아니라 괘선."
+      },
+      {
+        "name": "viewed-frame",
+        "value": "0 0 0 2px var(--ink)",
+        "purpose": "지금 보고 있는 끼니의 칸 묶음 전체를 두르는 테. 여러 행에 걸칠 때는 변마다 나누어 그린다."
+      },
+      {
+        "name": "status-ring",
+        "value": "inset 0 0 0 2px var(--on-blue-2)",
+        "purpose": "띠에서 연결 실패를 나타내는 빈 고리."
+      },
+      {
+        "name": "swatch-outline",
+        "value": "inset 0 0 0 1px var(--rule)",
+        "purpose": "범례에서 흰색(보통) 견본의 윤곽."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "행 바탕 전환, 펼침, 꺾쇠 회전의 감속 곡선."
+      },
+      {
+        "name": "control-color",
+        "value": "150ms",
+        "purpose": "띠 안 조작과 버튼의 바탕·글자색 전환."
+      },
+      {
+        "name": "row-background",
+        "value": "180ms",
+        "purpose": "기록표 행의 hover와 펼침 바탕 전환."
+      },
+      {
+        "name": "caret-turn",
+        "value": "200ms",
+        "purpose": "펼친 행의 꺾쇠 뒤집힘."
+      },
+      {
+        "name": "unfold",
+        "value": "220ms",
+        "purpose": "메뉴별 기록의 세로 펼침(grid-template-rows 0fr에서 1fr, 불투명도 0에서 1)."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "none",
+        "purpose": "prefers-reduced-motion에서는 모든 전환과 애니메이션을 끈다."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "viewport-tablet",
+        "value": "720px",
+        "purpose": "띠가 위에 붙고, 좌우 여백 32px, 1위 행이 처음부터 펼쳐진다."
+      },
+      {
+        "name": "viewport-margin",
+        "value": "1304px",
+        "purpose": "248px 주석 여백 열이 생긴다."
+      },
+      {
+        "name": "viewport-wide",
+        "value": "1440px",
+        "purpose": "주석 여백 280px, 데이터 상태가 띠로 올라간다."
+      },
+      {
+        "name": "board-phone",
+        "value": "620px (container)",
+        "purpose": "기록표 폭 620px 이하: 숫자 두 줄, 칸마다 이름표."
+      },
+      {
+        "name": "board-wide",
+        "value": "940px (container)",
+        "purpose": "기록표 폭 940px 초과: 13열 표."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "요일 선택",
+      "kind": "nav",
+      "refersTo": "day",
+      "description": "상단 띠의 요일 일곱 칸. 선택한 요일은 노랑, 오늘은 밑줄.",
+      "html": "<div class=\"ds-shell\"><div class=\"ds-days\" role=\"group\" aria-label=\"요일\"><button class=\"ds-day\" aria-pressed=\"false\">월<b>9</b></button><button class=\"ds-day\" aria-pressed=\"false\">화<b>10</b></button><button class=\"ds-day\" aria-pressed=\"false\">수<b>11</b></button><button class=\"ds-day\" aria-pressed=\"false\">목<b>12</b></button><button class=\"ds-day\" aria-pressed=\"true\">금<b>13</b></button><button class=\"ds-day\" aria-pressed=\"false\">토<b>14</b></button><button class=\"ds-day ds-is-today\" aria-pressed=\"false\">일<b>15</b></button></div></div>",
+      "css": ".ds-shell { display: inline-flex; padding: 10px 16px; background: var(--blue); color: var(--on-blue); font-family: var(--font); } .ds-days { display: flex; gap: 2px; } .ds-day { position: relative; width: 52px; height: 44px; padding: 0; border: 0; border-radius: 2px; background: transparent; color: var(--on-blue-2); display: flex; flex-direction: column; align-items: center; justify-content: center; font: inherit; font-size: 0.75rem; line-height: 1.1; cursor: pointer; transition: background-color 0.15s, color 0.15s; } .ds-day b { font-family: var(--font-num); font-size: 1.25rem; font-weight: 700; color: var(--on-blue); font-variant-numeric: tabular-nums; } .ds-day:hover:not([aria-pressed='true']) { background: var(--blue-deep); } .ds-day[aria-pressed='true'] { background: var(--hi); color: var(--ink); } .ds-day[aria-pressed='true'] b { color: var(--ink); } .ds-day.ds-is-today::after { content: ''; position: absolute; left: 50%; bottom: 2px; width: 14px; height: 2px; margin-left: -7px; background: currentColor; } .ds-day:focus-visible { outline: 2px solid var(--on-blue); outline-offset: 2px; }"
+    },
+    {
+      "name": "끼니 선택",
+      "kind": "nav",
+      "refersTo": "meal",
+      "description": "상단 띠의 끼니 세 칸. 1px 코발트 괘선으로 묶이고 선택한 끼니는 노랑.",
+      "html": "<div class=\"ds-shell-m\"><div class=\"ds-meals\" role=\"group\" aria-label=\"식사 시간\"><button class=\"ds-meal\" aria-pressed=\"false\">아침</button><button class=\"ds-meal\" aria-pressed=\"true\">점심</button><button class=\"ds-meal\" aria-pressed=\"false\">저녁</button></div></div>",
+      "css": ".ds-shell-m { display: inline-flex; padding: 12px 16px; background: var(--blue); color: var(--on-blue); font-family: var(--font); } .ds-meals { display: flex; border: 1px solid var(--blue-line); border-radius: 2px; } .ds-meal { height: 38px; padding: 0 18px; border: 0; background: transparent; color: inherit; font: inherit; font-size: 0.9375rem; font-weight: 500; cursor: pointer; transition: background-color 0.15s, color 0.15s; } .ds-meal + .ds-meal { border-left: 1px solid var(--blue-line); } .ds-meal:hover:not([aria-pressed='true']) { background: var(--blue-deep); } .ds-meal[aria-pressed='true'] { background: var(--hi); color: var(--ink); font-weight: 700; } .ds-meal:focus-visible { outline: 2px solid var(--on-blue); outline-offset: 2px; }"
+    },
+    {
+      "name": "주 이동",
+      "kind": "nav",
+      "refersTo": "icon-button",
+      "description": "32px 꺾쇠 버튼 둘 사이에 콘덴스드 날짜 범위. 휴대폰 폭에서는 버튼이 44px.",
+      "html": "<div class=\"ds-shell-w\"><button class=\"ds-icon-btn\" aria-label=\"이전 주\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M10.5 2.5 5 8l5.5 5.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"/></svg></button><span class=\"ds-week-label\">2026.11.9 – 11.15</span><button class=\"ds-icon-btn\" aria-label=\"다음 주\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M5.5 2.5 11 8l-5.5 5.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"/></svg></button></div>",
+      "css": ".ds-shell-w { display: inline-flex; align-items: center; gap: 8px; padding: 16px; background: var(--blue); color: var(--on-blue); } .ds-icon-btn { width: 32px; height: 32px; display: grid; place-items: center; padding: 0; border: 1px solid var(--blue-line); border-radius: 2px; background: transparent; color: inherit; cursor: pointer; transition: background-color 0.15s; } .ds-icon-btn svg { width: 14px; height: 14px; } .ds-icon-btn:hover { background: var(--blue-deep); } .ds-icon-btn:focus-visible { outline: 2px solid var(--on-blue); outline-offset: 2px; } .ds-week-label { min-width: 9.4ch; font-family: var(--font-num); font-weight: 600; font-size: 1.375rem; line-height: 1; text-align: center; white-space: nowrap; font-variant-numeric: tabular-nums; }"
+    },
+    {
+      "name": "버튼",
+      "kind": "button",
+      "refersTo": "button",
+      "description": "본문의 유일한 버튼. 토글로 쓰일 때 켜진 상태는 잉크 바탕.",
+      "html": "<div class=\"ds-btn-row\"><button class=\"ds-btn\" aria-pressed=\"false\">표로 보기</button><button class=\"ds-btn\" aria-pressed=\"true\">표로 보기</button></div>",
+      "css": ".ds-btn-row { display: flex; gap: 12px; padding: 16px; background: var(--paper); font-family: var(--font); } .ds-btn { height: 36px; padding: 0 14px; border: 1px solid var(--ink); border-radius: 2px; background: transparent; color: var(--ink); font: inherit; font-size: 0.875rem; font-weight: 600; cursor: pointer; transition: background-color 0.15s, color 0.15s; } .ds-btn:hover { background: var(--sheet); } .ds-btn[aria-pressed='true'] { background: var(--ink); color: var(--sheet); } .ds-btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; } @media (max-width: 719px) { .ds-btn { height: 44px; } }"
+    },
+    {
+      "name": "기록표 행",
+      "kind": "custom",
+      "refersTo": "board-row",
+      "description": "시그니처. 식단 한 개가 한 행이고 기준 5.0과 가감점이 합계 점수로 끝난다. 펼친 행은 흰 바탕, 합계 칸은 노랑.",
+      "html": "<div class=\"ds-board\"><div class=\"ds-board-head\"><span class=\"ds-h-who\">식당 · 식단</span><span>kcal</span><span>기준</span><span>칼로리</span><span>단백질</span><span>당류</span><span>지방</span><span class=\"ds-h-total\">점수</span></div><div class=\"ds-row ds-is-open\"><div class=\"ds-who\"><span class=\"ds-rank\">1</span><span class=\"ds-who-name\">기숙사식당 <svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M2.5 5.5 8 11l5.5-5.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"/></svg></span><span class=\"ds-who-meta\">한식 <span class=\"ds-pick\">추천</span></span></div><span class=\"ds-v ds-kcal\">1,014</span><span class=\"ds-v ds-ls ds-base\">5.0</span><span class=\"ds-v ds-ls ds-pos\">+0.4</span><span class=\"ds-v ds-ls ds-pos\">+0.4</span><span class=\"ds-v ds-ls ds-pos\">+0.7</span><span class=\"ds-v ds-ls ds-pos\">+0.9</span><span class=\"ds-total\"><span class=\"ds-score\">7.4</span></span></div><div class=\"ds-row\"><div class=\"ds-who\"><span class=\"ds-rank\">2</span><span class=\"ds-who-name\">학생식당 <svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M2.5 5.5 8 11l5.5-5.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"/></svg></span><span class=\"ds-who-meta\">정식</span></div><span class=\"ds-v ds-kcal\">1,089</span><span class=\"ds-v ds-ls ds-base\">5.0</span><span class=\"ds-v ds-ls ds-neg\">−0.2</span><span class=\"ds-v ds-ls ds-neg\">−0.4</span><span class=\"ds-v ds-ls ds-neg\">−0.2</span><span class=\"ds-v ds-ls ds-pos\">+0.1</span><span class=\"ds-total\"><span class=\"ds-score\">4.4</span></span></div></div>",
+      "css": ".ds-board { width: 620px; padding: 16px; background: var(--paper); color: var(--ink); font-family: var(--font); } .ds-board-head, .ds-row { display: grid; grid-template-columns: minmax(0, 1fr) 70px repeat(5, 48px) 132px; align-items: center; } .ds-board-head { padding-bottom: 8px; border-bottom: 3px solid var(--ink); font-size: 0.75rem; font-weight: 700; color: var(--ink-2); text-align: center; } .ds-board-head .ds-h-who { padding-left: 14px; text-align: left; } .ds-board-head .ds-h-total { padding-right: 12px; text-align: right; } .ds-row { border-bottom: 1px solid var(--rule); cursor: pointer; transition: background-color 0.18s cubic-bezier(0.16, 1, 0.3, 1); } .ds-row:hover { background: color-mix(in srgb, var(--sheet) 55%, var(--paper)); } .ds-row.ds-is-open { background: var(--sheet); } .ds-who { display: grid; grid-template-columns: 1.25rem minmax(0, 1fr); column-gap: 6px; align-items: baseline; padding: 12px 10px 12px 14px; } .ds-rank { font-family: var(--font-num); font-weight: 700; font-size: 1.125rem; color: var(--ink-2); } .ds-who-name { display: inline-flex; align-items: center; gap: 6px; font-weight: 800; font-size: 1.1875rem; letter-spacing: -0.02em; line-height: 1.25; } .ds-who-name svg { width: 12px; height: 12px; color: var(--ink-2); transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1); } .ds-is-open .ds-who-name svg { transform: rotate(180deg); } .ds-who-meta { grid-column: 2; display: flex; align-items: center; gap: 8px; margin-top: 3px; font-size: 0.8125rem; color: var(--ink-2); } .ds-pick { padding: 1px 7px; background: var(--ink); color: var(--sheet); font-size: 0.75rem; font-weight: 700; } .ds-v { font-family: var(--font-num); line-height: 1; font-variant-numeric: tabular-nums; } .ds-kcal { padding-right: 8px; font-size: 1.5rem; font-weight: 600; text-align: right; } .ds-ls { align-self: stretch; display: grid; place-items: center; border-left: 1px solid var(--rule); background: var(--sheet); font-size: 1.375rem; font-weight: 600; } .ds-base { border-left: 2px solid var(--ink); color: var(--ink-2); } .ds-pos { color: var(--pos); } .ds-neg { color: var(--neg); } .ds-total { align-self: stretch; display: grid; align-items: center; justify-items: end; padding: 8px 12px 8px 8px; border-left: 2px solid var(--ink); } .ds-is-open .ds-total { background: var(--hi); } .ds-score { font-family: var(--font-num); font-weight: 800; font-size: 5.75rem; line-height: 0.82; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }"
+    },
+    {
+      "name": "주간 점수표 칸",
+      "kind": "custom",
+      "refersTo": "week-cell-mid",
+      "description": "점수 구간 5단계의 옅은 바탕에 콘덴스드 숫자. 지금 보고 있는 요일 머리는 노랑, 칸은 2px 잉크 테.",
+      "html": "<div class=\"ds-week\"><span class=\"ds-wh\">월<b>9</b></span><span class=\"ds-wh\">화<b>10</b></span><span class=\"ds-wh ds-is-now\">수<b>11</b></span><span class=\"ds-wh\">목<b>12</b></span><span class=\"ds-wh\">금<b>13</b></span><button class=\"ds-cell ds-pos2\">7.4</button><button class=\"ds-cell ds-pos1\">6.1</button><button class=\"ds-cell ds-mid ds-is-now\">5.0</button><button class=\"ds-cell ds-neg1\">4.2</button><button class=\"ds-cell ds-neg2\">2.9</button></div>",
+      "css": ".ds-week { display: grid; grid-template-columns: repeat(5, 72px); gap: 2px; padding: 16px; background: var(--paper); font-family: var(--font); } .ds-wh { padding: 4px 0; font-size: 0.75rem; font-weight: 700; color: var(--ink-2); text-align: center; } .ds-wh b { margin-left: 3px; font-family: var(--font-num); font-size: 1.125rem; color: var(--ink); } .ds-wh.ds-is-now { background: var(--hi); color: var(--ink); } .ds-cell { height: 40px; padding: 0; border: 0; font-family: var(--font-num); font-size: 1.25rem; font-weight: 600; font-variant-numeric: tabular-nums; cursor: pointer; } .ds-cell:hover { box-shadow: inset 0 0 0 2px var(--ink); } .ds-cell.ds-is-now { box-shadow: 0 0 0 2px var(--ink); } .ds-cell:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; } .ds-pos2 { background: var(--t-pos2); color: var(--t-pos2-ink); font-weight: 800; } .ds-pos1 { background: var(--t-pos1); color: var(--t-pos1-ink); } .ds-mid { background: var(--t-mid); color: var(--t-mid-ink); } .ds-neg1 { background: var(--t-neg1); color: var(--t-neg1-ink); } .ds-neg2 { background: var(--t-neg2); color: var(--t-neg2-ink); font-weight: 800; } @media (max-width: 719px) { .ds-cell { height: 44px; font-size: 1.0625rem; } }"
+    },
+    {
+      "name": "순위표 행",
+      "kind": "custom",
+      "refersTo": "board-row",
+      "description": "3px 머리 괘선과 1px 행 괘선의 표. 차는 초록/빨강에 기호, 끝에 에너지 구성 막대.",
+      "html": "<table class=\"ds-stand\"><thead><tr><th class=\"ds-l\">순위</th><th class=\"ds-l\">식당</th><th>점수</th><th>차</th><th>kcal</th><th class=\"ds-mixh\">에너지 구성</th></tr></thead><tbody><tr><td class=\"ds-l ds-srank\">1</td><td class=\"ds-l ds-sname\">기숙사식당</td><td class=\"ds-sscore\">5.5</td><td class=\"ds-pos\">+0.5</td><td>1,032</td><td><div class=\"ds-mix\" role=\"img\" aria-label=\"에너지 구성: 탄수화물 62%, 단백질 17%, 지방 21%\"><span style=\"flex:62 0 0;background:var(--m-carb)\"></span><span style=\"flex:17 0 0;background:var(--m-protein)\"></span><span style=\"flex:21 0 0;background:var(--m-fat)\"></span></div></td></tr><tr><td class=\"ds-l ds-srank\">2</td><td class=\"ds-l ds-sname\">학생식당</td><td class=\"ds-sscore\">5.2</td><td class=\"ds-pos\">+0.2</td><td>1,058</td><td><div class=\"ds-mix\" role=\"img\" aria-label=\"에너지 구성: 탄수화물 58%, 단백질 19%, 지방 23%\"><span style=\"flex:58 0 0;background:var(--m-carb)\"></span><span style=\"flex:19 0 0;background:var(--m-protein)\"></span><span style=\"flex:23 0 0;background:var(--m-fat)\"></span></div></td></tr></tbody></table>",
+      "css": ".ds-stand { width: 560px; border-collapse: collapse; background: var(--paper); color: var(--ink); font-family: var(--font); } .ds-stand th { padding: 0 0 8px 14px; border-bottom: 3px solid var(--ink); font-size: 0.75rem; font-weight: 700; color: var(--ink-2); text-align: right; white-space: nowrap; } .ds-stand td { padding: 12px 0 12px 14px; border-bottom: 1px solid var(--rule); font-family: var(--font-num); font-size: 1.25rem; font-weight: 500; line-height: 1; text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; } .ds-stand .ds-l { text-align: left; } .ds-stand .ds-srank { font-weight: 700; color: var(--ink-2); } .ds-stand .ds-sname { font-family: var(--font); font-size: 1.0625rem; font-weight: 800; letter-spacing: -0.02em; } .ds-stand .ds-sscore { font-size: 2rem; font-weight: 800; } .ds-stand .ds-pos { color: var(--pos); } .ds-stand .ds-neg { color: var(--neg); } .ds-stand .ds-mixh { width: 30%; } .ds-mix { display: flex; gap: 2px; height: 10px; } .ds-mix span { min-width: 2px; }"
+    },
+    {
+      "name": "주석",
+      "kind": "custom",
+      "refersTo": "chart-tooltip",
+      "description": "주석 여백의 한 토막. 3px 잉크 밑줄이 붙은 작은 제목과 옅은 잉크 문단.",
+      "html": "<section class=\"ds-note\"><h2>점수 읽는 법</h2><p>기준 5.0은 같은 끼니의 이전 식단 평균입니다. 평균보다 나은 만큼 더하고 못한 만큼 뺀 합계가 오른쪽 점수입니다.</p><p><a href=\"#method\">분석 방법 자세히</a></p></section>",
+      "css": ".ds-note { width: 280px; padding: 16px; background: var(--paper); color: var(--ink); font-family: var(--font); } .ds-note h2 { margin: 0 0 10px; padding-bottom: 8px; border-bottom: 3px solid var(--ink); font-size: 0.8125rem; font-weight: 800; } .ds-note p { margin: 0 0 8px; font-size: 0.8125rem; line-height: 1.65; color: var(--ink-2); } .ds-note a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; } .ds-note a:hover { color: var(--blue); } .ds-note a:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }"
+    },
+    {
+      "name": "데이터 상태",
+      "kind": "custom",
+      "refersTo": "shell",
+      "description": "띠 위의 데이터 출처 표시. 색이 아니라 모양(채운 점, 빈 고리)과 글자로 가른다.",
+      "html": "<div class=\"ds-status\"><span><i class=\"ds-dot ds-ok\" aria-hidden=\"true\"></i>밥먹어U 실시간</span><span><i class=\"ds-dot ds-failed\" aria-hidden=\"true\"></i>실시간 연결 실패 · 저장된 식단 사용</span></div>",
+      "css": ".ds-status { display: flex; flex-wrap: wrap; gap: 2px 14px; padding: 16px; background: var(--blue); color: var(--on-blue-2); font-family: var(--font); font-size: 0.8125rem; } .ds-dot { display: inline-block; width: 8px; height: 8px; margin-right: 6px; border-radius: 50%; } .ds-dot.ds-ok { background: var(--on-blue); } .ds-dot.ds-failed { background: transparent; box-shadow: inset 0 0 0 2px var(--on-blue-2); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "박스스코어",
+    "overview": "한 끼는 그 시간 식단들의 한 판이다. 화면은 스포츠 지면의 박스스코어와 순위표처럼 읽힌다. 식단마다 한 행이고, 기준 5.0에 칼로리·단백질·당류·지방의 가감점이 한 줄로 이어지다가 오른쪽 끝의 큰 합계 숫자로 끝난다. 열자마자 답이 보여야 하므로 가장 큰 것은 언제나 점수이고, 점수의 위계는 상자나 색면이 아니라 크기 대비로만 선다.\n\n바탕은 차가운 종이색, 글자는 짙은 잉크, 위에는 코발트 띠 하나가 걸린다. 밝은 단일 테마이고 어두운 테마는 없다. 구획은 괘선으로만 한다. 굵은 잉크 괘선이 표 머리를, 가는 괘선이 행을 가른다. 숫자는 굵은 콘덴스드 서체로, 한글은 고딕으로 쓴다. 숫자가 주인공이고 한글은 그 숫자가 무엇인지 말해 주는 지면 본문이다.\n\n강조는 형광펜 노랑 하나뿐이고, 그 뜻은 \"지금 보고 있는 것\" 하나뿐이다. 초록과 빨강은 좋고 나쁨의 신호로만 쓰며 언제나 기호나 숫자와 함께 나온다. 밀도는 높지만 표는 정해진 폭을 지키고, 남는 너비는 읽는 법과 고지가 걸리는 주석 여백이 된다.",
+    "keyCharacteristics": [
+      "식단 한 개가 한 행, 합계 점수가 행의 오른쪽 끝에서 가장 크다.",
+      "구획은 3px 잉크 괘선(표 머리)과 1px 괘선(행)으로만 한다. 카드와 입체 그림자가 없다.",
+      "노랑은 \"지금 보고 있는 것\" 전용이고 화면에서 가장 센 색이다.",
+      "초록/빨강은 가감점과 점수 구간 전용이며 항상 +/− 기호나 숫자와 함께 쓴다.",
+      "숫자는 Barlow Condensed, 한글은 Pretendard. 숫자 칸은 고정폭 숫자로 자릿수를 맞춘다.",
+      "본문은 1040px 폭을 지키고, 남는 너비는 주석 여백이 된다.",
+      "휴대폰과 데스크톱이 같은 기록표를 다른 접힘으로 보여 준다. 어느 쪽도 줄인 판이 아니다."
+    ],
+    "rules": [
+      {
+        "name": "The Highlighter Rule",
+        "body": "노랑은 \"지금 보고 있는 것\"에만 칠한다. 장식, 경고, 추천, 좋은 점수의 표시로 쓰지 않는다. 화면에서 가장 센 색은 노랑이어야 하므로 다른 어떤 색면도 노랑보다 진하게 칠하지 않는다.",
+        "section": "colors"
+      },
+      {
+        "name": "The Signed Signal Rule",
+        "body": "초록과 빨강은 가감점과 점수 구간에만 쓰고, 항상 +/− 기호나 숫자 자체와 함께 쓴다. 음수에는 하이픈이 아니라 빼기 기호(−)를 쓴다. 색만으로 좋고 나쁨을 전하지 않는다.",
+        "section": "colors"
+      },
+      {
+        "name": "The Pale Extremes Rule",
+        "body": "점수 구간의 양 끝도 옅은 바탕에 굵은 숫자로 구분한다. 진한 초록이나 진한 빨강 색면을 깔지 않는다.",
+        "section": "colors"
+      },
+      {
+        "name": "The Size-Only Score Rule",
+        "body": "합계 점수의 위계는 크기 대비만으로 세운다. 테두리, 배지, 원, 색 글자를 두르지 않는다. 노란 바탕은 그 행을 보고 있을 때만 깔린다.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Column Rule",
+        "body": "숫자 칸은 고정폭 숫자(`tabular-nums`)로 자릿수를 세로로 맞추고 오른쪽 정렬한다. 제목과 본문 속 숫자는 비례폭 그대로 둔다.",
+        "section": "typography"
+      },
+      {
+        "name": "The Label Once Rule",
+        "body": "같은 이름표를 두 번 쓰지 않는다. 열 머리가 보이는 폭에서는 영양소 이름을 머리에 한 번만 쓰고, 머리를 숨기는 휴대폰 폭에서만 칸마다 이름표를 붙인다.",
+        "section": "typography"
+      },
+      {
+        "name": "The Fixed Measure Rule",
+        "body": "표는 정해진 폭을 지킨다. 화면이 넓어져도 표를 늘이지 않고, 남는 너비는 주석 여백이 된다.",
+        "section": "layout"
+      },
+      {
+        "name": "The Same Board Rule",
+        "body": "기록표는 폭이 달라져도 같은 칸을 같은 순서로 보여 준다. 좁은 폭에서 칸을 빼지 않고 접는다. 칸을 숨기는 것은 아래의 보조 표(순위표의 덜 중요한 열)뿐이다.",
+        "section": "layout"
+      },
+      {
+        "name": "The Rules Only Rule",
+        "body": "구획은 괘선으로 한다. 3px 잉크는 표 머리, 1px은 행이다. 내용을 카드에 담지 않고, 떠 있어 보이게 하는 그림자를 쓰지 않는다.",
+        "section": "elevation"
+      },
+      {
+        "name": "The One Frame Rule",
+        "body": "지금 보고 있는 끼니는 칸마다 테를 두르지 않고 묶음 전체에 2px 잉크 테 하나를 두른다.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do 새 표를 만들 때 머리 아래에 3px 잉크 괘선, 행 아래에 1px 행 괘선을 긋고, 열 머리는 0.75rem/700의 옅은 잉크로 쓴다.",
+      "Do 숫자는 Barlow Condensed에 고정폭 숫자로 오른쪽 정렬하고, 한글 문장은 Pretendard로 쓴다.",
+      "Do \"지금 보고 있는 것\"을 가리킬 때만 노랑을 쓰고, 그 위 글자는 잉크로 쓴다.",
+      "Do 가감점과 차이는 초록/빨강에 +/− 기호를 붙여 쓴다. 음수에는 빼기 기호(−)를 쓴다.",
+      "Do 한 겹 위를 나타낼 때는 종이색 위에 흰 종이를 깐다.",
+      "Do 추정값에는 추정이라고 쓰고, 공시값과 구분한다.",
+      "Do 기록표는 좁은 폭에서 칸을 빼지 말고 접는다. 점수는 어느 접힘에서도 행의 오른쪽 위에서 가장 크게 둔다.",
+      "Do 색으로 구간을 나눌 때는 숫자나 이름을 함께 쓰고, 차트에는 같은 값을 표로 보는 길을 둔다.",
+      "Do 움직임은 세로 펼침과 색 전환 한 축, 150–220ms로 하고 움직임 줄이기 설정에서는 즉시 바꾼다."
+    ],
+    "donts": [
+      "Don't 내용을 카드, KPI 타일, 식당별 카드 격자에 담지 않는다. 구획은 괘선으로 한다.",
+      "Don't 떠 있어 보이게 하는 그림자를 쓰지 않는다. `box-shadow`는 번짐 0의 테를 그릴 때만 쓴다.",
+      "Don't 노랑을 장식, 추천, 경고, 좋은 점수의 표시로 쓰지 않는다.",
+      "Don't 초록이나 빨강을 기호나 숫자 없이 쓰지 않는다. 종류를 가르는 색(에너지 구성)에도 쓰지 않는다.",
+      "Don't 점수 숫자에 테두리, 배지, 원, 구간 색을 두르지 않는다. 위계는 크기로만 세운다.",
+      "Don't 점수 구간의 양 끝을 진한 색면으로 칠하지 않는다. 노랑보다 센 색면을 만들지 않는다.",
+      "Don't 같은 이름표를 두 번 쓰지 않는다. 열 머리가 보이는 폭에서 칸마다 이름표를 다시 붙이지 않는다.",
+      "Don't 넓은 화면에서 표를 늘이지 않는다. 1040px 폭을 지키고 남는 너비는 주석 여백으로 둔다.",
+      "Don't 조작 요소 밖에서 모서리를 둥글리지 않는다. 조작 요소도 2px까지다.",
+      "Don't 어두운 테마를 만들지 않는다. 이 세계는 낮에 읽는 밝은 지면 하나다."
+    ]
+  }
+}

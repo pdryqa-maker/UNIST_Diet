@@ -2,12 +2,11 @@ import { useEffect, useMemo, useState } from 'react';
 import { loadDataset } from './lib/dataset.js';
 import { bestOf, byCafeteria, summarize, weekDates, weeklyTrend } from './lib/aggregate.js';
 import { CAFETERIA_ORDER, TIME_ORDER, currentMealTime } from './lib/menu.js';
-import { dateTimeLabel } from './lib/format.js';
-import FilterBar from './components/FilterBar.jsx';
-import Highlights from './components/Highlights.jsx';
-import MealBoard from './components/MealBoard.jsx';
-import WeekHeatmap from './components/WeekHeatmap.jsx';
-import { NutrientCompare, Ranking } from './components/CafeteriaComparison.jsx';
+import Shell, { ShellFrame } from './components/Shell.jsx';
+import Scoreboard from './components/Scoreboard.jsx';
+import Notes from './components/Notes.jsx';
+import WeekTable from './components/WeekTable.jsx';
+import Standings from './components/Standings.jsx';
 import TrendChart from './components/TrendChart.jsx';
 import Methodology from './components/Methodology.jsx';
 
@@ -24,6 +23,14 @@ function pickTime(timesAvailable, isToday, wanted) {
   const preferred = isToday ? currentMealTime() : 'LUNCH';
   if (timesAvailable.has(preferred)) return preferred;
   return TIME_ORDER.find((t) => timesAvailable.has(t)) ?? 'LUNCH';
+}
+
+// 점수 높은 순. 동점이면 식당 순서를 따른다.
+const byScore = (a, b) => b.score - a.score || CAFETERIA_ORDER.indexOf(a.cafeteria) - CAFETERIA_ORDER.indexOf(b.cafeteria);
+
+function scrollToTop() {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
 }
 
 export default function App() {
@@ -49,9 +56,7 @@ export default function App() {
     const date = pickDate(datesWithMeals, ds.today, wantedDate);
     const timesAvailable = new Set(weekOpts.filter((o) => o.date === date).map((o) => o.time));
     const time = pickTime(timesAvailable, date === ds.today, wantedTime);
-    const slot = weekOpts
-      .filter((o) => o.date === date && o.time === time)
-      .sort((a, b) => CAFETERIA_ORDER.indexOf(a.cafeteria) - CAFETERIA_ORDER.indexOf(b.cafeteria));
+    const slot = weekOpts.filter((o) => o.date === date && o.time === time).sort(byScore);
     return {
       weekOpts,
       dates: weekDates(week),
@@ -68,30 +73,40 @@ export default function App() {
 
   const trend = useMemo(() => (ds ? weeklyTrend(ds.options) : []), [ds]);
 
-  if (error) return <div className="app loading">⚠️ {error}</div>;
-  if (!ds || !view) return <div className="app loading">식단을 불러와 분석하는 중…</div>;
+  if (error)
+    return (
+      <>
+        <ShellFrame />
+        <main className="page">
+          <div className="state" role="alert">
+            <h1>식단을 불러오지 못했습니다</h1>
+            <p>저장된 식단과 밥먹어U API 모두에서 데이터를 받지 못했습니다. 네트워크 연결을 확인한 뒤 다시 시도해 주세요.</p>
+            <p>원인: {error}</p>
+            <button className="btn" onClick={() => window.location.reload()}>
+              다시 시도
+            </button>
+          </div>
+        </main>
+      </>
+    );
 
-  const isThisWeek = week === ds.thisWeek;
-  const weekWord = isThisWeek ? '이번 주' : '선택한 주';
+  if (!ds || !view)
+    return (
+      <>
+        <ShellFrame />
+        <main className="page">
+          <div className="state" role="status">
+            <p>식단을 불러와 분석하는 중입니다.</p>
+          </div>
+        </main>
+      </>
+    );
+
+  const weekWord = week === ds.thisWeek ? '이번 주' : '선택한 주';
 
   return (
-    <div className="app">
-      <header className="header">
-        <div>
-          <h1>🥗 UNIST Diet</h1>
-          <p>기숙사·학생·교직원 식당 식단의 탄수화물·단백질·지방·당류를 추정하고 다이어트 적합도를 0–10점으로 매깁니다.</p>
-        </div>
-        <div className="status">
-          <span>
-            <span className={`dot ${ds.liveStatus}`} aria-hidden="true" />
-            {ds.liveStatus === 'ok' ? '밥먹어U API 실시간 연결' : ds.liveStatus === 'failed' ? 'API 연결 실패 · 저장된 스냅샷 사용' : '저장된 스냅샷'}
-          </span>
-          <span>식단 갱신 {dateTimeLabel(ds.lastUpdated)}</span>
-          <a href="#method">분석 방법</a>
-        </div>
-      </header>
-
-      <FilterBar
+    <>
+      <Shell
         weekStarts={ds.weekStarts}
         week={week}
         weekSource={ds.weekSources[week]}
@@ -108,43 +123,49 @@ export default function App() {
         timesAvailable={view.timesAvailable}
         time={view.time}
         onTime={setWantedTime}
+        liveStatus={ds.liveStatus}
+        lastUpdated={ds.lastUpdated}
       />
 
-      <Highlights
-        best={view.best}
-        date={view.date}
-        time={view.time}
-        weekRanking={view.ranking}
-        weekSummary={view.weekSummary}
-        isThisWeek={isThisWeek}
-      />
+      <main className="page">
+        <Scoreboard key={`${view.date}-${view.time}`} options={view.slot} date={view.date} time={view.time} best={view.best} />
 
-      <MealBoard options={view.slot} date={view.date} time={view.time} best={view.best} />
+        <Notes
+          ranking={view.ranking}
+          weekSummary={view.weekSummary}
+          weekWord={weekWord}
+          liveStatus={ds.liveStatus}
+          lastUpdated={ds.lastUpdated}
+        />
 
-      <WeekHeatmap
-        options={view.weekOpts}
-        dates={view.dates}
-        selected={{ date: view.date, time: view.time }}
-        onSelect={(d, t) => {
-          setWantedDate(d);
-          setWantedTime(t);
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }}
-      />
+        <WeekTable
+          options={view.weekOpts}
+          dates={view.dates}
+          selected={{ date: view.date, time: view.time }}
+          weekWord={weekWord}
+          onSelect={(d, t) => {
+            setWantedDate(d);
+            setWantedTime(t);
+            scrollToTop();
+          }}
+        />
 
-      <div className="grid-2 section-gap">
-        <Ranking ranking={view.ranking} weekWord={weekWord} />
-        <NutrientCompare ranking={view.ranking} weekWord={weekWord} />
-      </div>
+        <Standings ranking={view.ranking} weekWord={weekWord} />
 
-      <TrendChart data={trend} selectedWeek={week} />
+        <TrendChart data={trend} selectedWeek={week} />
 
-      <Methodology baselines={ds.baselines} fallbackFactor={ds.fallbackFactor} />
+        <Methodology baselines={ds.baselines} fallbackFactor={ds.fallbackFactor} />
 
-      <footer className="footer">
-        식단 출처: 밥먹어U (<a href="https://github.com/HeXA-UNIST/meal_client">HeXA-UNIST/meal_client</a>, 원 백엔드{' '}
-        <a href={REPO_URL}>mad-unist/unist-meal-backend</a>) · 영양 성분은 메뉴명 기반 추정치입니다.
-      </footer>
-    </div>
+        <footer className="footer">
+          <p>
+            식단 출처: 밥먹어U (<a href="https://github.com/HeXA-UNIST/meal_client">HeXA-UNIST/meal_client</a>, 원 백엔드{' '}
+            <a href={REPO_URL}>mad-unist/unist-meal-backend</a>)
+          </p>
+          <p>
+            영양 성분은 메뉴명 기반 추정치입니다. <b>UNIST 공식 서비스가 아닙니다.</b>
+          </p>
+        </footer>
+      </main>
+    </>
   );
 }

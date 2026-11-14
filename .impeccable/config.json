@@ -1,0 +1,35 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/model-pick.html"
+        ],
+        "createdAt": "2026-11-14T15:35:31.490Z",
+        "reason": "agent: unchosen direction sketch from the decision round, meant to show a different type system; file is gitignored and never ships"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/challenger-wayfinding.html"
+        ],
+        "createdAt": "2026-11-14T15:35:31.642Z",
+        "reason": "agent: unchosen direction sketch from the decision round, meant to show a different type system; file is gitignored and never ships"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/challenger-warm-app.html"
+        ],
+        "createdAt": "2026-11-14T15:35:31.797Z",
+        "reason": "agent: unchosen direction sketch from the decision round, meant to show a different type system; file is gitignored and never ships"
+      }
+    ]
+  }
+}

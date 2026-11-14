@@ -2,7 +2,17 @@ import { DAY_KO, DAYS } from './menu.js';
 
 export const fmt0 = (x) => (x == null || Number.isNaN(x) ? '–' : Math.round(x).toLocaleString('ko-KR'));
 export const fmt1 = (x) => (x == null || Number.isNaN(x) ? '–' : x.toFixed(1));
-export const signed1 = (x) => (x > 0.04 ? `+${x.toFixed(1)}` : x < -0.04 ? x.toFixed(1) : '0.0');
+/** 가감점 표기. 음수에는 하이픈이 아니라 빼기 기호(−)를 쓴다. */
+export const signed1 = (x) => (x > 0.04 ? `+${x.toFixed(1)}` : x < -0.04 ? `−${Math.abs(x).toFixed(1)}` : '0.0');
+/** 가감점의 방향: 'pos' | 'neg' | 'zero' */
+export const signOf = (x) => (x > 0.04 ? 'pos' : x < -0.04 ? 'neg' : 'zero');
+
+/** '11월 13일 금요일' */
+export function dateLong(iso) {
+  const d = new Date(`${iso}T00:00:00Z`);
+  const dow = DAY_KO[DAYS[(d.getUTCDay() + 6) % 7]];
+  return `${d.getUTCMonth() + 1}월 ${d.getUTCDate()}일 ${dow}요일`;
+}
 
 export function dayLabel(iso) {
   const d = new Date(`${iso}T00:00:00Z`);

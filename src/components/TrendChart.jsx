@@ -4,7 +4,7 @@ import { CAFETERIA_ORDER, CAFETERIAS } from '../lib/menu.js';
 import { fmt1, scoreTone } from '../lib/format.js';
 import { scoreBand } from '../lib/scoring.js';
 
-const tick = { fill: 'var(--muted)', fontSize: 11 };
+const tick = { fill: 'var(--ink-2)', fontSize: 13, fontWeight: 500, fontFamily: 'var(--font-num)' };
 const shortWeek = (w) => {
   const d = new Date(`${w}T00:00:00Z`);
   return `${d.getUTCMonth() + 1}/${d.getUTCDate()}`;
@@ -13,59 +13,56 @@ const shortWeek = (w) => {
 function TrendTooltip({ active, payload, label }) {
   if (!active || !payload?.length || payload[0].value == null) return null;
   const v = payload[0].value;
-  const band = scoreBand(v);
   return (
     <div className="tt">
       <div className="tt-title">{shortWeek(label)} 주</div>
       <div className="tt-row">
-        <span className="key" style={{ background: `var(--sig-${scoreTone(v)})`, height: 8, width: 8, borderRadius: 4 }} />
+        <span className="tt-key" style={{ background: `var(--sig-${scoreTone(v)})` }} />
         <b>{fmt1(v)}</b>
-        <span>
-          {band.icon} {band.ko}
-        </span>
+        <span>{scoreBand(v).ko}</span>
       </div>
     </div>
   );
 }
 
-// 점 색 = 그 주 점수의 신호(초록 적합 / 회색 보통 / 빨강 부적합)
+// 점 색 = 그 주 점수의 구간 (초록 적합 / 회색 보통 / 빨강 부적합)
 function SignalDot({ cx, cy, value, r = 4 }) {
   if (value == null || cx == null || cy == null) return null;
-  return <circle cx={cx} cy={cy} r={r} fill={`var(--sig-${scoreTone(value)})`} stroke="var(--surface)" strokeWidth={2} />;
+  return <circle cx={cx} cy={cy} r={r} fill={`var(--sig-${scoreTone(value)})`} stroke="var(--paper)" strokeWidth={2} />;
 }
 
 function Panel({ cafeteria, data, domain, selectedWeek }) {
   const rows = data.map((r) => ({ week: r.week, v: r[cafeteria] }));
-  const latest = [...rows].reverse().find((r) => r.v != null);
+  // 머리의 숫자는 노란 띠가 가리키는 주(지금 보고 있는 주)의 값이다. 순위표·주석 여백의 숫자와 같아야 한다.
+  const viewed = rows.find((r) => r.week === selectedWeek);
   return (
     <div className="trend-panel">
       <div className="trend-head">
-        <span className="caf-name">{CAFETERIAS[cafeteria].ko}</span>
-        {latest && (
+        <span className="name">{CAFETERIAS[cafeteria].ko}</span>
+        {selectedWeek && (
           <span className="trend-latest">
-            최근 <b>{fmt1(latest.v)}</b>
+            {shortWeek(selectedWeek)} 주<b>{fmt1(viewed?.v)}</b>
           </span>
         )}
       </div>
-      <div style={{ width: '100%', height: 180 }}>
+      <div className="trend-plot">
         <ResponsiveContainer>
           <LineChart data={rows} margin={{ top: 8, right: 10, bottom: 0, left: -24 }}>
-            <CartesianGrid stroke="var(--grid)" vertical={false} />
-            <XAxis dataKey="week" tickFormatter={shortWeek} tick={tick} axisLine={{ stroke: 'var(--axis)' }} tickLine={false} minTickGap={24} />
-            <YAxis domain={domain} tick={tick} axisLine={false} tickLine={false} allowDecimals={false} />
-            <ReferenceLine y={5} stroke="var(--ink-2)" strokeWidth={1} />
-            {selectedWeek && <ReferenceLine x={selectedWeek} stroke="var(--surface-3)" strokeWidth={10} />}
-            <Tooltip content={<TrendTooltip />} cursor={{ stroke: 'var(--axis)', strokeWidth: 1 }} />
+            <CartesianGrid stroke="var(--rule)" vertical={false} />
+            <XAxis dataKey="week" tickFormatter={shortWeek} tick={tick} axisLine={{ stroke: 'var(--ink)' }} tickLine={false} minTickGap={24} />
+            <YAxis domain={domain} ticks={[domain[0], 5, domain[1]]} tick={tick} axisLine={false} tickLine={false} allowDecimals={false} />
+            {selectedWeek && <ReferenceLine x={selectedWeek} stroke="var(--hi)" strokeWidth={12} />}
+            <ReferenceLine y={5} stroke="var(--ink-2)" strokeWidth={1} strokeDasharray="4 3" />
+            <Tooltip content={<TrendTooltip />} cursor={{ stroke: 'var(--ink-2)', strokeWidth: 1 }} />
             <Line
               type="monotone"
               dataKey="v"
-              stroke="var(--ink-2)"
+              stroke="var(--ink)"
               strokeWidth={2}
               strokeLinecap="round"
               strokeLinejoin="round"
               dot={<SignalDot />}
               activeDot={<SignalDot r={6} />}
-              connectNulls
               isAnimationActive={false}
             />
           </LineChart>
@@ -81,31 +78,33 @@ export default function TrendChart({ data, selectedWeek }) {
   const domain = [Math.max(0, Math.floor(Math.min(4, ...values))), Math.min(10, Math.ceil(Math.max(6, ...values)))];
 
   return (
-    <section className="panel">
-      <div className="panel-head">
+    <section className="sec" aria-labelledby="trend-title">
+      <div className="sec-head">
         <div>
-          <h2>주별 다이어트 점수 추이</h2>
-          <p className="sub">식당별 주간 평균 점수 · 가로선 = 기준 평균 5.0점 · 점 색 = 적합(초록) / 보통(회색) / 부적합(빨강)</p>
+          <h2 id="trend-title">주별 점수 추이</h2>
+          <p>식당별 주간 평균 점수입니다. 점선은 기준 5.0, 점 색은 점수 구간, 노란 띠와 오른쪽 위 숫자는 지금 보고 있는 주입니다. 식단이 없던 주는 선이 끊깁니다.</p>
         </div>
-        <button className="link-btn" onClick={() => setAsTable((v) => !v)} aria-pressed={asTable}>
-          {asTable ? '차트로 보기' : '표로 보기'}
+        <button className="btn" onClick={() => setAsTable((v) => !v)} aria-pressed={asTable}>
+          표로 보기
         </button>
       </div>
 
       {asTable ? (
-        <div className="table-wrap">
-          <table className="data">
+        <div className="table-scroll">
+          <table className="plain">
             <thead>
               <tr>
-                <th>주 시작</th>
+                <th scope="col">주 시작</th>
                 {CAFETERIA_ORDER.map((k) => (
-                  <th key={k}>{CAFETERIAS[k].ko}</th>
+                  <th key={k} scope="col">
+                    {CAFETERIAS[k].ko}
+                  </th>
                 ))}
               </tr>
             </thead>
             <tbody>
               {data.map((r) => (
-                <tr key={r.week} style={r.week === selectedWeek ? { fontWeight: 650 } : undefined}>
+                <tr key={r.week} className={r.week === selectedWeek ? 'is-now' : undefined}>
                   <td>{r.week}</td>
                   {CAFETERIA_ORDER.map((k) => (
                     <td key={k}>{fmt1(r[k])}</td>
