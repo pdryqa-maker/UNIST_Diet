@@ -608,8 +608,8 @@ a:hover {
 }
 .row > .c-menu {
   padding-right: 16px;
-  color: var(--ink-2);
-  font-size: 0.8125rem;
+  color: var(--ink);
+  font-size: 0.9375rem;
   line-height: 1.55;
   text-align: left;
 }
@@ -781,7 +781,7 @@ a:hover {
   width: 100%;
   max-width: 0;
   font-family: var(--font);
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
 }
 .item {
   display: flex;
@@ -795,7 +795,7 @@ a:hover {
 .item .rule {
   min-width: 0;
   overflow: hidden;
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   color: var(--ink-2);
   text-overflow: ellipsis;
   white-space: nowrap;
